@@ -6,9 +6,8 @@ import {EmployeeAddComponent} from './employees/add/employee-add.component';
 import {EmployeeEditComponent} from './employees/edit/employee-edit.component';
 import {EmployeesComponent} from './employees/employees.component';
 import {FormsModule} from '@angular/forms';
-import {AppRoutingModule} from './app-routing.module';
 import {EmployeeService} from './employees/services/employee.service';
-import {RouterModule} from '@angular/router';
+import {AppRoutingModule} from './app-routing.module';
 
 
 @NgModule({
@@ -16,7 +15,7 @@ import {RouterModule} from '@angular/router';
     AppComponent, EmployeeAddComponent, EmployeeEditComponent, EmployeesComponent
   ],
   imports: [
-    BrowserModule, FormsModule, RouterModule
+    BrowserModule, FormsModule, AppRoutingModule
   ],
   providers: [EmployeeService],
   bootstrap: [AppComponent]

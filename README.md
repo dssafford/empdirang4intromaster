@@ -1,5 +1,7 @@
 # EmpDirAng4IntroMaster
 
+Working example of angular4 testing, bootstrap, routes
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.4.4.
 
 ## Development server

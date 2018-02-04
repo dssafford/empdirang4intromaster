@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {Location} from '@angular/common';
+
 import {Employee} from '../models/employee';
 import {Router} from '@angular/router';
 import {EmployeeService} from '../services/employee.service';
@@ -12,25 +12,42 @@ export class EmployeeAddComponent implements OnInit {
   title = 'Add New Employee';
   newEmployee: Employee;
 
-  constructor(private _employeeService: EmployeeService,
-              private _location: Location) {
+  statusCode: number;
+
+  constructor(private employeeService: EmployeeService,
+              private router: Router) {
   }
 
   ngOnInit() {
     this.newEmployee = new Employee();
   }
 
-  saveEmployee(event: any) {
-    const _this = this;
+  // addNewEntry(entryItem: EntryItem): Promise<EntryItem> {
+  //   return this.http
+  //     .post('http://localhost:3000' + '/entry', entryItem)
+  //     .toPromise()
+  //     .then(response => response as EntryItem)
+  //     .catch(this.handleError);
+  // }
 
-    this._employeeService.addEmployee(this.newEmployee)
-      .then(function () {
-        _this._location.back();
-      });
+//   this.entryService.addNewEntry(this.entry_in_progress)
+// .then((entryItem) => {
+//   this.router.navigateByUrl('home');
+// });
+
+  saveEmployee(employee: Employee) {
+
+    this.employeeService.addEmployee(this.newEmployee)
+      .subscribe(
+        data => this.statusCode = data,
+        errorCode => this.statusCode = errorCode
+      );
+    console.log('status code = ' + this.statusCode);
+    this.router.navigateByUrl('/employees');
   }
 
-  cancelAdd(event: any) {
-    this._location.back();
+  cancelAdd() {
+    this.router.navigateByUrl('/employees');
   }
 
 }

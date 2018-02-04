@@ -3,8 +3,11 @@ import {Employee} from './models/employee';
 import {EmployeeService} from './services/employee.service';
 import {Router} from '@angular/router';
 
+
 @Component({
-  templateUrl: 'employees.component.html'
+  selector: 'app-employee',
+  templateUrl: './employees.component.html',
+  styleUrls: ['./employees.component.css']
 })
 
 export class EmployeesComponent implements OnInit {
@@ -16,11 +19,19 @@ export class EmployeesComponent implements OnInit {
   }
 
   getEmployees() {
-    this._employeeService.getEmployees()
-      .then(employees => this.employees = employees);
+
+    // this.http.get('http://localhost:8003/api/EmployeeList').subscribe(data => {
+    //   console.log(data);
+
+      this._employeeService.getEmployees()
+        .subscribe(employees => this.employees = employees);
+
   }
 
   ngOnInit() {
+    // this.http.get('http://localhost:8003/api/EmployeeList').subscribe(data => {
+    //   console.log(data);
+    // });
     this.getEmployees();
   }
 

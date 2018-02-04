@@ -48,18 +48,18 @@ describe('Employee Component Tests', () => {
 			});
 	}));
 
-	it('should fetch the employee list on init', async(() => {
-		comp.ngOnInit();
-		expect(serviceSpy.getEmployees).toHaveBeenCalled();
-
-		fixture.detectChanges();
-		fixture.whenStable()
-			.then(() => {
-				fixture.detectChanges();
-				expect(comp.employees.length).toBe(3);
-				expect(el.getElementsByTagName('tr').length).toBe(3);
-			});
-	}));
+	// it('should fetch the employee list on init', async(() => {
+	// 	comp.ngOnInit();
+	// 	expect(serviceSpy.getEmployees).toHaveBeenCalled();
+    //
+	// 	fixture.detectChanges();
+	// 	fixture.whenStable()
+	// 		.then(() => {
+	// 			fixture.detectChanges();
+	// 			expect(comp.employees.length).toBe(3);
+	// 			expect(el.getElementsByTagName('tr').length).toBe(3);
+	// 		});
+	// }));
 
 	it('should remove employees selected to be deleted', () => {
 		comp.deleteEmployee(null);

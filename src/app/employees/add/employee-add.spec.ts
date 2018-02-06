@@ -7,6 +7,8 @@ import {Router} from '@angular/router';
 import {Employee} from '../../../app/employees/models/employee';
 import {EmployeeService} from '../../../app/employees/services/employee.service';
 import {EmployeeAddComponent} from '../../../app/employees/add/employee-add.component';
+import {Observable} from 'rxjs/Observable';
+import 'rxjs/add/observable/of';
 
 describe('Employee Add Component Tests', () => {
   let comp: EmployeeAddComponent;
@@ -27,7 +29,7 @@ describe('Employee Add Component Tests', () => {
 
     employeeServiceMock = {
       addEmployee: jasmine.createSpy('addEmployee')
-        .and.returnValue(Promise.resolve())
+        .and.returnValue(Observable.of)
     };
 
     TestBed
@@ -65,7 +67,7 @@ describe('Employee Add Component Tests', () => {
   });
 
   it('should navigate to the employee list page on cancel', () => {
-    comp.cancelAdd(null);
+    comp.cancelAdd();
     fixture.whenStable()
       .then(() => expect(locationSpy.back).toHaveBeenCalled());
   });

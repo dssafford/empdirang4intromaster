@@ -23,10 +23,19 @@ export class EmployeeService {
     return this.http.get<Employee[]>(this.api + '/EmployeeList');
   }
 
+  deleteEmployee(id: number): Observable<Employee> {
+    console.log('in deleteEmployee');
+
+    return this.http.get('http://localhost:8003/api/EmployeeDelete/' + id);
+
+    // return Promise.resolve(this.data).then(
+    //   employees => employees.filter(employee => employee.id === id)[0]
+    // );
+  }
   getEmployee(id: number): Observable<Employee> {
     console.log('in getEmployee');
 
-    return this.http.get('http://localhost:8003/api/EmployeeEdit/' + id);
+    return this.http.get('http://localhost:8003/api/EmployeeDelete/' + id);
 
     // return Promise.resolve(this.data).then(
     //   employees => employees.filter(employee => employee.id === id)[0]
@@ -54,9 +63,9 @@ addEmployee(employee: Employee): Observable<number> {
     return Promise.reject(error.message || error);
   }
 
-  removeEmployee(employee: Employee): Promise<Employee[]> {
-    const index = this.data.indexOf(employee);
-    return Promise.resolve(this.data)
-      .then(employees => employees.splice(index, 1));
-  }
+  // removeEmployee(employee: Employee): Promise<Employee[]> {
+  //   const index = this.data.indexOf(employee);
+  //   return Promise.resolve(this.data)
+  //     .then(employees => employees.splice(index, 1));
+  // }
 }

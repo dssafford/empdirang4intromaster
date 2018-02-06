@@ -35,8 +35,8 @@ export class EmployeesComponent implements OnInit {
     this.getEmployees();
   }
 
-  deleteEmployee(employee: Employee) {
-    this._employeeService.removeEmployee(employee);
+  deleteEmployee(id: number) {
+    this._employeeService.deleteEmployee(id);
   }
 
   goToEdit(id: number) {
